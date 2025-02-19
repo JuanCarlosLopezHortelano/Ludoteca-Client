@@ -19,6 +19,22 @@ export class AuthorEditComponent {
   constructor(
     public dialogRef: MatDialogRef<AuthorEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any,
-    
-  )
+    private authorService: AuthorService
+
+  ){}
+
+  ngOnInit(): void{
+    this.author = this.author ? Object.assign({}, this.data.author) : new Author();
+  }
+
+  onSave(){
+    this.authorService.saveAuthor(this.author).subscribe(()=>{
+      this.dialogRef.close();
+    })
+  }
+
+  onClose(){
+    this.dialogRef.close();
+  }
+
 }
