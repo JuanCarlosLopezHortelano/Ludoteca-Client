@@ -13,7 +13,7 @@ import { MatInputModule } from '@angular/material/input';
   templateUrl: './author-edit.component.html',
   styleUrl: './author-edit.component.scss'
 })
-export class AuthorEditComponent {
+export class AuthorEditComponent implements OnInit {
   author: Author;
 
   constructor(
@@ -24,7 +24,7 @@ export class AuthorEditComponent {
   ){}
 
   ngOnInit(): void{
-    this.author = this.author ? Object.assign({}, this.data.author) : new Author();
+    this.author = this.data.author ? Object.assign({}, this.data.author) : new Author();
   }
 
   onSave(){
