@@ -37,17 +37,20 @@ export class CategoryListComponent implements OnInit{
     }
 
     createCategory(){
+
       const dialogRef = this.dialog.open(CategoryEditComponent,
         {
           data: {}
         }
       );
+
       dialogRef.afterClosed().subscribe(result => {
         this.ngOnInit() ;
       })
     }
 
     editCategory(category: Category){
+
       const dialogRef = this.dialog.open(CategoryEditComponent,
         {
           data: {category}
@@ -59,6 +62,7 @@ export class CategoryListComponent implements OnInit{
     }
 
     deleteCategory(category: Category){
+      
       const dialogRef = this.dialog.open(DialogConfirmationComponent,{
         data:{
           tile: "Eliminar categoria", description:  "Atencion si borra la categoria se perderan sus datos.<br> ¿Desea eliminar la categoria?"

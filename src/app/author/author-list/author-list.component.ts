@@ -90,7 +90,7 @@ export class AuthorListComponent implements OnInit {
      data:{
       title: 'Eliminar autor',
       description:
-              'Atención estas seguro que desea borrar el autor si borra el autor se perderán sus datos.<br> ¿Desea eliminar el autor?'
+             'Atención estas seguro que desea borrar el autor si borra el autor se perderán sus datos.<br> ¿Desea eliminar el autor?'
      }
     });
 
