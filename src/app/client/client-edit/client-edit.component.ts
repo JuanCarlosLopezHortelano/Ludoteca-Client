@@ -7,6 +7,9 @@ import { MatInputModule } from '@angular/material/input';
 import { ClientService } from '../client.service';
 import { Client } from '../model/Client';
 import {MatSnackBar} from '@angular/material/snack-bar'
+
+
+
 @Component({
   selector: 'app-client-edit',
   imports: [FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
@@ -28,7 +31,9 @@ export class ClientEditComponent implements OnInit {
   }
 
   onSave(){
+
     if (this.client.name.trim()===''){this.snackBar.open('El nombre no puede estar vacio','Cerrar',{duration: 3000}); return }
+    
     this.clientService.existClientName(this.client.name).subscribe((nameExists:boolean)=>{
       if(nameExists){this.snackBar.open('El nombre ya existe', 'Cerrar',{duration: 3000})}
       else {

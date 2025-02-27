@@ -11,6 +11,7 @@ import { Client } from '../../client/model/Client';
 import { Game } from '../../game/model/Game';
 import { ClientService } from '../../client/client.service';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-prestamo-edit',
@@ -29,6 +30,7 @@ export class PrestamoEditComponent implements OnInit {
     private prestamoService: PrestamoService,
     private gameService: GameService,
     private clientService: ClientService,
+    private snackBar: MatSnackBar
   ){}
 
   ngOnInit(): void {
@@ -45,11 +47,23 @@ export class PrestamoEditComponent implements OnInit {
   }
 
   onSave(){
+
+    if (!this.prestamo.loanDate){this.snackBar.open('Debe rellenar la fecha de reserva','Cerrar',{duration: 3000}); return }
+    if (!this.prestamo.returnDate){this.snackBar.open('Debe rellenar la fecha de devolucion','Cerrar',{duration: 3000}); return }
+    if (this.prestamo.loanDate > this.prestamo.returnDate){this.snackBar.open('La fecha de inicio no puede ser mayor a la fecha de devolucion','Cerrar',{duration: 3000}); return }
+  
+    const daysDiff = (new Date(this.prestamo.returnDate).getTime()-new Date(this.prestamo.loanDate).getTime())/(1000*60*60*24);
+    if(daysDiff > 14){
+      this.snackBar.open('Error: Lo sentimos el prestamo no puede durar mas de 14 días','Cerrar',{duration: 3000});return;
+    }
+
     this.prestamoService.savePrestamo(this.prestamo).subscribe(()=>{
     this.dialogRef.close();
-    })  }
+    }) 
+  }
 
   onClose(){
-    this.dialogRef.close()  }
+    this.dialogRef.close()  
+  }
 
 }

@@ -5,6 +5,6 @@ export class Prestamo{
     id: number;
     client: Client;
     game: Game;
-    loanDate: string;
-    returnDate: string;
+    loanDate: Date;
+    returnDate: Date;
 }

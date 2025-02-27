@@ -37,10 +37,12 @@ export class GameEditComponent implements OnInit {
       
       this.categoryService.getCategories().subscribe((categories) => {
         this.categories = categories;
+
         if (this.game.category != null){
           const categoryFilter: Category[] = categories.filter(
             (category) =>category.id == this.data.game.category.id
           );
+
         if(categoryFilter != null){
           this.game.category = categoryFilter[0]
         }
@@ -49,8 +51,10 @@ export class GameEditComponent implements OnInit {
 
       this.authorService.getAllAuthors().subscribe((authors) =>{
         this.authors = authors;
+
         if(this.game.author != null){
           const authorFilter: Author[] = authors.filter((author) => author.id == this.data.game.author.id)
+
           if(authorFilter != null){this.game.author = authorFilter[0]}
         }
       })
@@ -60,6 +64,7 @@ export class GameEditComponent implements OnInit {
    
 
   onSave() {
+    
     this.gameService.saveGame(this.game).subscribe((result) => {
         this.dialogRef.close();
     });
@@ -68,7 +73,4 @@ export class GameEditComponent implements OnInit {
 onClose() {
     this.dialogRef.close();
 }
-
-
-
 }

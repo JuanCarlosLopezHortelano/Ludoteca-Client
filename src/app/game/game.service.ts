@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 //import { GAME_DATA } from './model/mock-games';
 import { Game } from './model/Game';
 import { HttpClient } from '@angular/common/http';
@@ -16,9 +16,11 @@ export class GameService {
   private baseUrl = 'http://localhost:8080/game'
 
   getGames(title?: string, categoryId?:number): Observable<Game[]>{
-      return this.http.get<Game[]>(this.composeFindUrl(title,categoryId))
+     
+    return this.http.get<Game[]>(this.composeFindUrl(title,categoryId))
   }
   saveGame(game: Game): Observable<void> {
+  
    const {id} = game;
    const url = id ? `${this.baseUrl}/${id}` : this.baseUrl;
 

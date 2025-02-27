@@ -23,8 +23,6 @@ export class PrestamoService {
 
   savePrestamo(prestamo:Prestamo): Observable<Prestamo>{
     delete prestamo.id
-    prestamo.loanDate = this.formatDate(new Date(prestamo.loanDate) )
-    prestamo.returnDate = this.formatDate(new Date(prestamo.returnDate))
     console.log(prestamo)
     return this.http.put<Prestamo>(this.baseUrl, prestamo);
   }
