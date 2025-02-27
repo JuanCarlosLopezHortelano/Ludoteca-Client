@@ -28,4 +28,8 @@ export class ClientService {
     
     return this.http.delete(`${this.baseUrl}/${idClient}`);
   }
+
+  existClientName(name: string): Observable<any>{
+    return this.http.get(`${this.baseUrl}/${name}`)
+  }
 }

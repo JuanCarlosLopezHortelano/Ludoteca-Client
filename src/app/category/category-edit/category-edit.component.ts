@@ -23,17 +23,19 @@ export class CategoryEditComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    
     this.category = this.data.category != null ? Object.assign({}, this.data.category) : new Category();
-
   }
 
   onSave(){
+
     this.categoryService.saveCategory(this.category).subscribe(() =>{
       this.dialogRef.close();
     });
   }
 
   onClose(){
+    
     this.dialogRef.close();
   }
 }

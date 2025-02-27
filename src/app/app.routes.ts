@@ -7,6 +7,6 @@ import { Routes } from '@angular/router';
         { path: 'authors',    loadComponent: () => import('../app/author/author-list/author-list.component').then(m => m.AuthorListComponent)},
         { path: 'games',      loadComponent: () => import('../app/game/game-list/game-list.component').then(m => m.GameListComponent)},
         { path: 'clients',    loadComponent: () => import('../app/client/client-list/client-list.component').then(m => m.ClientListComponent)},
-    
+        { path: 'prestamos',  loadComponent: () => import('../app/prestamo/prestamo-list/prestamo-list.component').then(m => m.PrestamoListComponent)},
     ];
 ;
