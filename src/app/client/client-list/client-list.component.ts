@@ -56,7 +56,7 @@ export class ClientListComponent {
 
   deleteClient(client: Client){
     const dialogRef = this.dialog.open(DialogConfirmationComponent,{
-      data:{title: "Eliminar cliente", description: "Cuidado, si borra el cliente se perderan sus datos <br> Estas seguro??"}
+      data:{title: "Eliminar cliente", description: "Cuidado, si borra el cliente se perderan sus datos <br> ¿Estas seguro?"}
     });
 
     dialogRef.afterClosed().subscribe(result =>{
