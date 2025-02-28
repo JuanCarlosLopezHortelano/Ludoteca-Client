@@ -9,7 +9,7 @@
 
         <mat-form-field>
             <mat-label>Titulo</mat-label>
-            <mat-select name="game" [(ngModel)]="prestamo.game">
+            <mat-select name="game" [(ngModel)]="prestamo.game" required>
                 @for (game of games; track game.id) {
                     <mat-option [value]="game">{{ game.title }}</mat-option>
                 }
@@ -19,25 +19,28 @@
     
         <mat-form-field>
             <mat-label>Cliente</mat-label>
-            <mat-select name="client" [(ngModel)]="prestamo.client">
+            <mat-select name="client" [(ngModel)]="prestamo.client" required>
                 @for (client of clients; track client.id) {
                     <mat-option [value]="client">{{ client.name }}</mat-option>
                 }
             </mat-select>
             <mat-error>El cliente no puede estar vacío</mat-error>
         </mat-form-field>
-
+        <br>
+        <br>
         <mat-label>Fecha de Prestamo</mat-label>
 
         <div class ="horizontal-inputs">
             
-            <mat-form-field>
+            <mat-form-field required>
           
-                <input type="text" matInput placeholder="Fecha Inicio" [(ngModel)]="prestamo.loanDate" name="loanDate" >
+                <input type="text" matInput placeholder="Fecha Inicio" [(ngModel)]="prestamo.loanDate" name="loanDate" required>
+                <mat-error>La fecha inicio de reserva no puede estar vacia</mat-error>
             </mat-form-field>
     
             <mat-form-field>
-                <input type="text" matInput placeholder="Fecha de Fin" [(ngModel)]="prestamo.returnDate" name="returnDate" >
+                <input type="text" matInput placeholder="Fecha de Fin" [(ngModel)]="prestamo.returnDate" name="returnDate" required>
+                <mat-error>La fecha fin de reserva no puede estar vacia</mat-error>
             </mat-form-field>
         </div>
         
