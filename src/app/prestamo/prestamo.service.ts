@@ -27,9 +27,7 @@ export class PrestamoService {
     return this.http.put<Prestamo>(this.baseUrl, prestamo);
   }
 
-  formatDate(date: Date): string{
-    return date.toISOString().split('T')[0];
-  }
+ 
 
   deletePrestamo(idPrestamo: number): Observable<void>{
     
