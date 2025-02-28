@@ -23,18 +23,13 @@
                 </mat-select>
             </mat-form-field>
 
-               
-            <mat-form-field>
-                <mat-label>Fecha</mat-label>
-                <input
-                    type="text"
-                    matInput
-                    placeholder="XXXX-XX-XX"
-                    [(ngModel)]="filterDate"
-                    name="filterDate"
-                />
-                
-            </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+                <mat-label>Selecciona una fecha</mat-label>
+                <input matInput [(ngModel)]="filterDate" [matDatepicker]="picker" name="filterDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
 
         </form>
 

@@ -18,7 +18,8 @@ import { PrestamoEditComponent } from '../prestamo-edit/prestamo-edit.component'
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Pageable } from '../../core/model/page/Pageable';
 import { DialogConfirmationComponent } from '../../core/dialog-confirmation/dialog-confirmation.component';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-prestamo-list',
@@ -33,6 +34,10 @@ import { DialogConfirmationComponent } from '../../core/dialog-confirmation/dial
     MatInputModule,
     MatSelectModule,
     MatPaginator,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
+
   ],
   templateUrl: './prestamo-list.component.html',
   styleUrl: './prestamo-list.component.scss'
@@ -49,7 +54,7 @@ export class PrestamoListComponent implements OnInit{
   prestamos: Prestamo[];
   filterGame: Game;
   filterClient: Client;
-  filterDate: string;
+  filterDate: Date = new Date();
 
   dataSource = new MatTableDataSource<Prestamo>();
   displayedColumns: string[] = ['id', 'game', 'client','loanDate', 'returnDate', 'action'];

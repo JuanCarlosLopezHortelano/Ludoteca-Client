@@ -16,9 +16,9 @@ export class PrestamoService {
 
   private baseUrl = 'http://localhost:8080/prestamo'
 
-  getPrestamos(pageable: Pageable, idGame?:number, idClient?: number, filterDate?: string): Observable<PrestamoPage>{
-    console.log(pageable)
-    return this.http.post<PrestamoPage>(this.composeFindUrl(idGame,idClient,filterDate), {pageable: pageable})
+  getPrestamos(pageable: Pageable, idGame?:number, idClient?: number, filterDate?: Date): Observable<PrestamoPage>{
+    
+    return this.http.post<PrestamoPage>(this.composeFindUrl(idGame,idClient,filterDate?.toISOString().split('T')[0] || ''), {pageable: pageable})
   }
 
   savePrestamo(prestamo:Prestamo): Observable<Prestamo>{
