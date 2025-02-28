@@ -68,7 +68,7 @@ export class PrestamoListComponent implements OnInit{
   ){}
  
   ngOnInit(): void {
-    console.log(this.dataSource)
+    this.onCleanFilter()
     this.loadPage()
 
 
